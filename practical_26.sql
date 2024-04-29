@@ -149,15 +149,15 @@ SELECT name FROM hobby;
 --  Create a select query to get employee name, his/her employee_salary
 SELECT concat(e.first_name, ' ', e.last_name) AS 'employee_name', es.salary
 FROM employee e
-INNER JOIN employee_salary es ON e.id = es.fk_employee_id;
+INNER JOIN employee_salary es ON es.fk_employee_id = e.id;
 
 /* Create a select query to get employee name, total salary of employee,
 hobby name(comma-separated- you need to use subquery for hobby name) */
 SELECT concat(e.first_name, ' ', e.last_name) AS 'employee_name', sum(es.salary) AS 'total_salary',
 	(SELECT h.name 
 	FROM hobby h 
-	INNER JOIN employee_hobby eh ON h.id = eh.fk_hobby_id 
+	INNER JOIN employee_hobby eh ON eh.fk_hobby_id = h.id 
 	WHERE eh.fk_employee_id = e.id) AS 'hobby' 
 FROM employee e 
-INNER JOIN employee_salary es ON e.id = es.fk_employee_id
+INNER JOIN employee_salary es ON es.fk_employee_id = e.id
 GROUP BY es.fk_employee_id; 
