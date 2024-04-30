@@ -153,7 +153,7 @@ INNER JOIN employee_salary es ON es.fk_employee_id = e.id;
 
 /* Create a select query to get employee name, total salary of employee,
 hobby name(comma-separated- you need to use subquery for hobby name) */
-SELECT CONCAT(e.first_name, ' ', e.last_name) AS 'employee_name', sum(es.salary) AS 'total_salary',
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS 'employee_name', SUM(es.salary) AS 'total_salary',
 	(SELECT GROUP_CONCAT(h.name SEPARATOR ', ')
 	FROM hobby h 
 	INNER JOIN employee_hobby eh ON eh.fk_hobby_id = h.id 
