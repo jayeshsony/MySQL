@@ -3,7 +3,7 @@ CREATE TABLE `hobby` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-)
+);
 
 CREATE TABLE `employee` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -13,7 +13,7 @@ CREATE TABLE `employee` (
   `mobile_number` varchar(17) NOT NULL,
   `address` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-)
+);
 
 CREATE TABLE `employee_salary` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -23,7 +23,7 @@ CREATE TABLE `employee_salary` (
   PRIMARY KEY (`id`),
   KEY `employee_salary_fk` (`fk_employee_id`),
   CONSTRAINT `employee_salary_fk` FOREIGN KEY (`fk_employee_id`) REFERENCES `employee` (`id`) 
-)
+);
 
 CREATE TABLE `employee_hobby` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -34,7 +34,7 @@ CREATE TABLE `employee_hobby` (
   KEY `employee_hobby_fk_2` (`fk_hobby_id`),
   CONSTRAINT `employee_hobby_fk_1` FOREIGN KEY (`fk_employee_id`) REFERENCES `employee` (`id`),
   CONSTRAINT `employee_hobby_fk_2` FOREIGN KEY (`fk_hobby_id`) REFERENCES `hobby` (`id`)
-)
+);
 
 -- Insert records into all tables
 INSERT INTO hobby (name)
